@@ -18,7 +18,7 @@ var queueMethods = {
     this.storage[this.currentSize] = value;
     this.currentSize++;
   },
-  dequeue: function(value) {
+  dequeue: function() {
     //removing an item from the front of the queue
     //check if there is anything in the queue
     if (this.currentSize > 0) {
