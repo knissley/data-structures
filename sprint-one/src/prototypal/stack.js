@@ -17,7 +17,7 @@ var stackMethods = {
   pop: function(value) {
     if (this.currentSize > 0) {
       let lastValue = this.storage[this.currentSize - 1];
-      delete this.storage[this.currentSize];
+      delete this.storage[this.currentSize - 1];
       this.currentSize--;
       return lastValue;
     }
@@ -26,3 +26,5 @@ var stackMethods = {
     return this.currentSize;
   }
 };
+
+//return to this, im not sure this is entirely prototypal
