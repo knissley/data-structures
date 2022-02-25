@@ -26,5 +26,3 @@ var stackMethods = {
     return this.currentSize;
   }
 };
-
-//return to this, im not sure this is entirely prototypal

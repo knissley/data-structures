@@ -3,25 +3,26 @@ class Queue {
   // but try not not reference your old code in writing the new style.
   constructor() {
     this.storage = {};
-    this.currentSize = 0;
+    this.firstPosition = 0;
+    this.lastPosition = 0;
   }
 
   enqueue(value) {
-    this.storage[this.currentSize] = value;
-    this.currentSize++;
+    this.storage[this.lastPosition] = value;
+    this.lastPosition++;
   }
 
   dequeue() {
-    if (this.currentSize > 0) {
-      let firstValue = this.storage['0'];
-      delete this.storage['0'];
-      this.currentSize--;
+    if (this.size() > 0) {
+      let firstValue = this.storage[this.firstPosition];
+      delete this.storage[this.firstPosition];
+      this.firstPosition++;
       return firstValue;
     }
   }
 
   size() {
-    return this.currentSize;
+    return this.lastPosition - this.firstPosition;
   }
 
 }

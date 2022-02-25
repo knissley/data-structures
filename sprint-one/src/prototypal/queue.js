@@ -1,36 +1,33 @@
 var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var instance = Object.create(Queue.queueMethods);
+  var instance = Object.create(queueMethods);
   instance.storage = {};
-  instance.currentSize = 0;
+  instance.firstPosition = 0;
+  instance.lastPosition = 0;
 
   return instance;
 };
 
-Queue.queueMethods = {};
+var queueMethods = {};
 
-Queue.queueMethods.enqueue = function(value) {
+queueMethods.enqueue = function(value) {
   //adding a new entry to the back of the queue
-  this.storage[this.currentSize] = value;
-  this.currentSize++;
+  this.storage[this.lastPosition] = value;
+  this.lastPosition++;
 };
 
-Queue.queueMethods.dequeue = function() {
+queueMethods.dequeue = function() {
   //removing an entry from the front of the queue
   //first check if there is anything in the queue
-  if (this.currentSize > 0) {
-    //if so, grab the first value, to be returned later
-    let firstValue = this.storage['0'];
-    // delete the first value in the queue
-    delete this.storage['0'];
-    //decrement the current size
-    this.currentSize--;
-    //return the first value
+  if (this.size() > 0 ) {
+    let firstValue = this.storage[this.firstPosition];
+    delete this.storage[this.firstPosition];
+    this.firstPosition++;
     return firstValue;
   }
 };
 
-Queue.queueMethods.size = function() {
-  return this.currentSize;
+queueMethods.size = function() {
+  return this.lastPosition - this.firstPosition;
 };
